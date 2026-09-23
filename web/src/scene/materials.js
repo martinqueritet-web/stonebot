@@ -48,7 +48,7 @@ export class MaterialLibrary {
     return {
       bunTopCrust: this.pbr(
         'bun_top',
-        { clearcoat: 0.6, clearcoatRoughness: 0.18, sheen: 0.08, sheenRoughness: 0.6, sheenColor: new THREE.Color('#ffb870') },
+        { clearcoat: 0.42, clearcoatRoughness: 0.3, sheen: 0.08, sheenRoughness: 0.6, sheenColor: new THREE.Color('#ffb870') },
         { ao: false, normalScale: 0.7 },
       ),
       bunBottomCrust: this.pbr(
@@ -78,7 +78,7 @@ export class MaterialLibrary {
       ),
       sauce: this.pbr(
         'sauce',
-        { clearcoat: 1, clearcoatRoughness: 0.06, specularIntensity: 1, emissive: new THREE.Color('#5a2a00'), emissiveIntensity: 0.04 },
+        { clearcoat: 0.8, clearcoatRoughness: 0.12, specularIntensity: 0.7, envMapIntensity: 0.6, emissive: new THREE.Color('#6a2c00'), emissiveIntensity: 0.06 },
         { ao: false, normalScale: 0.6 },
       ),
       pickle: this.pbr(
@@ -90,15 +90,16 @@ export class MaterialLibrary {
         'onion',
         {
           color: new THREE.Color('#e9d3ae'),
-          clearcoat: 0.55,
-          clearcoatRoughness: 0.2,
+          clearcoat: 0.3,
+          clearcoatRoughness: 0.3,
+          envMapIntensity: 0.7,
           sheen: 0.35,
           sheenRoughness: 0.5,
           sheenColor: new THREE.Color('#f3d9a8'),
           emissive: new THREE.Color('#6b4a22'),
           emissiveIntensity: 0.08,
         },
-        { ao: false, normalScale: 0.7 },
+        { ao: false, normalScale: 0.3 },
       ),
       sesame: this.pbr('sesame', { sheen: 0.3, sheenColor: new THREE.Color('#fff4dc') }, { ao: false, normalScale: 0.5 }),
       board: new THREE.MeshStandardMaterial({
