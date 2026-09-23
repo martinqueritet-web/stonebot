@@ -66,7 +66,7 @@ export class Labels {
     let from = -1;
     for (const it of this.items) {
       const f = LAYERS[it.id].label.from;
-      if (f <= p && f > from) {
+      if (f + 0.03 <= p && f > from) {
         from = f;
         best = it.id;
       }
