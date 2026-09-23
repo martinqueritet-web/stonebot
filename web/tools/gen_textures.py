@@ -350,7 +350,7 @@ def onion(n=512):
     col = ramp(t, [(0.0, (226, 206, 170)), (0.5, (214, 186, 140)), (0.85, (204, 160, 98)), (1.0, (184, 128, 66))])
     col *= (0.94 + 0.06 * streak)[..., None]
     height = streak * 0.6 + fib * 0.15
-    rough = np.clip(0.18 + fib * 0.15, 0.12, 0.4)
+    rough = np.clip(0.4 + fib * 0.2, 0.35, 0.65)
     save_set("onion", col, height, 2.0, rough)
 
 

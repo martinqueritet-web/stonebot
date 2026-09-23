@@ -60,6 +60,20 @@ export class Labels {
     }
   }
 
+  /** Most recently revealed ingredient (phones show one caption at a time). */
+  currentId(p) {
+    let best = null;
+    let from = -1;
+    for (const it of this.items) {
+      const f = LAYERS[it.id].label.from;
+      if (f <= p && f > from) {
+        from = f;
+        best = it.id;
+      }
+    }
+    return best;
+  }
+
   update({ p, camera, burger, rig, active, focusId, hoverId, fade, dt }) {
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -75,6 +89,7 @@ export class Labels {
       const cfg = LAYERS[it.id].label;
       let vis = smoothstep(cfg.from, cfg.to, p) * fade;
       if (focusId) vis *= it.id === focusId ? 1 : 0.18;
+      if (compact && it.id !== this.currentId(p)) vis = 0;
       it.vis += (vis - it.vis) * (1 - Math.exp(-dt * 10));
       const a = burger.anchorWorld(it.id, rig.right, it.side, this.v).project(camera);
       it.ax = (a.x * 0.5 + 0.5) * w;
@@ -108,6 +123,24 @@ export class Labels {
         it.line.style.opacity = '0';
         it.dot.style.opacity = '0';
         it.halo.style.opacity = '0';
+        continue;
+      }
+      if (compact) {
+        // single caption centred under the burger, tied to it by the leader
+        const ly = h - 96;
+        const cx = w / 2;
+        it.line.setAttribute('d', `M ${it.ax.toFixed(1)} ${it.ay.toFixed(1)} L ${cx.toFixed(1)} ${(ly - it.height / 2 - 8).toFixed(1)}`);
+        const len = Math.hypot(cx - it.ax, ly - it.height / 2 - 8 - it.ay);
+        it.line.style.strokeDasharray = `${len}`;
+        it.line.style.strokeDashoffset = `${len * (1 - it.vis)}`;
+        it.line.style.opacity = String(it.vis);
+        it.dot.setAttribute('cx', it.ax.toFixed(1));
+        it.dot.setAttribute('cy', it.ay.toFixed(1));
+        it.dot.style.opacity = String(it.vis);
+        it.halo.style.opacity = '0';
+        it.el.style.visibility = 'visible';
+        it.el.style.opacity = String(smoothstep(0.35, 1, it.vis));
+        it.el.style.transform = `translate3d(${(cx - it.width / 2).toFixed(1)}px, ${(ly - it.height / 2).toFixed(1)}px, 0)`;
         continue;
       }
       const dir = it.side === 'left' ? -1 : 1;

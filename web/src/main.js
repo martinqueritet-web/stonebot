@@ -169,7 +169,7 @@ function frame(now) {
       focusId: state.focusId,
       hoverId: state.hoverId,
       dt,
-      fade: 1,
+      fade: state.focusId ? 0 : 1,
     });
 
     // copy & chrome driven by progress

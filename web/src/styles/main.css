@@ -559,10 +559,11 @@ kbd {
 @media (max-width: 760px) {
   .nav { padding-top: 16px; }
   .nav__links a:not(.nav__cta) { display: none; }
-  .label__tag { display: none; }
-  .label__index { display: none; }
-  .label__name { font-size: 14px; }
-  .finale { bottom: 24px; }
+  .label, .label--left { flex-direction: column; align-items: center; text-align: center; gap: 2px; }
+  .label__index { order: -1; }
+  .label__body { justify-items: center; }
+  .label__name { font-size: 22px; }
+  .finale { display: none; }
   .detail { top: auto; height: min(72vh, 620px); width: 100vw; padding: 28px 22px 32px; transform: translateY(104%); border-left: 0; border-top: 1px solid rgba(247, 236, 219, 0.12); border-radius: 22px 22px 0 0; }
   .detail.is-open { transform: none; }
   .detail__top { margin-bottom: 18px; }

@@ -6,7 +6,8 @@ import { buildSauce, buildPickles, buildOnions } from './parts/toppings.js';
 import { LAYERS, monotoneSpline } from './choreography.js';
 import { smoothstep } from './geometry.js';
 
-const HIGHLIGHT = new THREE.Color('#ffb46b');
+const HIGHLIGHT = new THREE.Color('#ff9a4a');
+const _c = new THREE.Color();
 
 /**
  * Assembles every ingredient as its own group, stacked like the reference
@@ -121,9 +122,11 @@ export class Burger {
       l.group.rotation.y = l.cfg.yaw * s;
       l.group.rotation.x = l.cfg.tilt * s;
 
+      // subtle warm lift: base emission plus a faint glow, never a flat tint
       for (const m of l.materials) {
-        m.mat.emissive.copy(m.emissive).lerp(HIGHLIGHT, h * 0.6);
-        m.mat.emissiveIntensity = m.intensity + h * 0.07;
+        _c.copy(m.emissive).multiplyScalar(m.intensity);
+        m.mat.emissive.copy(_c).add(_c.copy(HIGHLIGHT).multiplyScalar(h * 0.045));
+        m.mat.emissiveIntensity = 1;
       }
     }
   }
