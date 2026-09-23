@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Le Double Smash · Stone</title>
+    <meta name="description" content="Le Double Smash en 3D : faites défiler pour démonter le burger couche par couche." />
+    <meta name="theme-color" content="#a4552f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="webgl" aria-label="Burger en 3D interactif"></canvas>
+
+    <!-- loader -->
+    <div class="loader" aria-live="polite">
+      <div class="loader__inner">
+        <span class="loader__brand">Stone</span>
+        <span class="loader__label">Mise en place <span id="loader-pct">0</span>%</span>
+        <span class="loader__track"><span class="loader__bar" id="loader-bar"></span></span>
+      </div>
+    </div>
+
+    <header class="nav" data-ui>
+      <a class="nav__brand" href="#top">Stone<span>Smash burgers</span></a>
+      <nav class="nav__links">
+        <a href="#geste">Le geste</a>
+        <a class="nav__cta" href="#commander">Commander</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- pinned 3D sequence -->
+      <section class="experience" id="experience">
+        <div class="experience__sticky">
+          <div class="hero-copy" id="hero-copy">
+            <p class="eyebrow">Signature · Double smash</p>
+            <h1 class="hero-title">Le Double<br /><em>Smash</em></h1>
+            <p class="hero-lede">
+              Deux steaks écrasés sur la plancha, cheddar fondu, oignons confits, pickles et sauce maison, dans une brioche au sésame.
+            </p>
+            <div class="scroll-cue" aria-hidden="true">
+              <span class="scroll-cue__line"></span>
+              <span>Faites défiler pour le démonter</span>
+            </div>
+          </div>
+
+          <div class="labels" id="labels"></div>
+
+          <aside class="rail" aria-hidden="true">
+            <span class="rail__count" id="rail-count">00 / 09</span>
+            <div class="rail__track"><span class="rail__fill" id="rail-fill"></span></div>
+            <ol class="rail__ticks" id="rail-ticks"></ol>
+          </aside>
+
+          <div class="finale" id="finale">
+            <p class="eyebrow">Vue éclatée</p>
+            <p class="finale__title">Neuf couches.<br /><em>Un seul geste.</em></p>
+            <p class="finale__note">Cliquez sur un ingrédient pour tout savoir.</p>
+          </div>
+
+          <div class="hint" id="hint" data-ui>
+            <span><kbd>Molette</kbd> démonter</span>
+            <span><kbd>Glisser</kbd> tourner</span>
+            <span><kbd>Ctrl</kbd>+<kbd>molette</kbd> zoomer</span>
+            <span><kbd>Clic</kbd> détails</span>
+          </div>
+          <button class="reset-view" id="reset-view" type="button" data-ui>Recentrer la vue</button>
+        </div>
+      </section>
+
+      <!-- next section -->
+      <section class="geste" id="geste">
+        <div class="geste__inner">
+          <p class="eyebrow">Le geste</p>
+          <h2 class="section-title">Écraser, saisir,<br /><em>assembler.</em></h2>
+          <ol class="steps">
+            <li>
+              <span class="steps__n">01</span>
+              <h3>Le smash</h3>
+              <p>Une boule de bœuf haché, écrasée d’un geste sec sur la plaque brûlante. La croûte se forme en quelques dizaines de secondes.</p>
+            </li>
+            <li>
+              <span class="steps__n">02</span>
+              <h3>La fonte</h3>
+              <p>Le cheddar est posé sur le steak encore sur la plaque. Il fond sous la cloche et coule sur les bords.</p>
+            </li>
+            <li>
+              <span class="steps__n">03</span>
+              <h3>L’assemblage</h3>
+              <p>Talon toasté, oignons, deux steaks, deux cheddars, sauce, pickles et brioche au sésame, dans cet ordre.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="cta" id="commander">
+        <div class="cta__inner">
+          <h2 class="section-title">Il est meilleur<br /><em>en vrai.</em></h2>
+          <a class="button" href="#top">Commander le Double Smash</a>
+        </div>
+        <footer class="footer">
+          <span>Stone · Smash burgers</span>
+          <span>Expérience 3D temps réel · WebGL</span>
+        </footer>
+      </section>
+    </main>
+
+    <aside class="detail" id="detail" aria-hidden="true" data-ui></aside>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
