@@ -330,8 +330,8 @@ em { font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
 .finale {
   position: absolute;
   left: var(--gutter);
-  bottom: clamp(28px, 8vh, 90px);
-  max-width: 360px;
+  bottom: 28px;
+  max-width: 300px;
   color: var(--ink);
   opacity: 0;
   visibility: hidden;
@@ -339,14 +339,14 @@ em { font-style: italic; font-variation-settings: 'SOFT' 100, 'WONK' 1; }
 .finale__title {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(34px, 3.8vw, 56px);
+  font-size: clamp(26px, 2.5vw, 38px);
   font-weight: 350;
   line-height: 1;
   letter-spacing: -0.025em;
 }
 .finale__title em { color: var(--ember); }
-.finale .eyebrow { color: var(--ink-2); }
-.finale__note { margin: 16px 0 0; font-size: 13px; color: var(--ink-2); }
+.finale .eyebrow { color: var(--ink-2); margin-bottom: 10px; }
+.finale__note { margin: 10px 0 0; font-size: 13px; color: var(--ink-2); }
 
 /* -------------------------------------------------- hint & reset */
 .hint {
